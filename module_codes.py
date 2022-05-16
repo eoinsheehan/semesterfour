@@ -19,7 +19,7 @@ soup = BeautifulSoup(html, "html.parser" )
 details = soup.find("div", {"class": "printBefore"})
 print(details.find("h1",{"class": "pageTitle"}).contents[0]) # module title
 
-# need to get module description here now
+# need to get module description here no
     
 
 # get all of the required info from these links generated
