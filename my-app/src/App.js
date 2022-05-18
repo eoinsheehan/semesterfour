@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Course from './components/courses/Courses'
+import Card from './components/UI/Card'
 
-function App() {
+const App = () => {
+
+  const clicky = () =>{
+    console.log('Eoin')
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Card>
+      <Course/>
+      <button onClick={clicky}>Click me</button>
+      </Card>
     </div>
   );
 }
