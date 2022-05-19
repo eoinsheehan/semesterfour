@@ -11,7 +11,13 @@ const App = () => {
 
   const addCourse = (newCourse) =>{
     setSelectedCourses((prevSelectedCourses) =>{
-      return [newCourse,...prevSelectedCourses]
+      return [...prevSelectedCourses,newCourse]
+    })
+  }
+
+  const removeCourse = (selection) =>{
+    setSelectedCourses((prevSelectedCourses) =>{
+      return prevSelectedCourses.filter(course => course !== selection)
     })
   }
 
@@ -20,7 +26,7 @@ const App = () => {
       <Card>
       <Course onSelect = {addCourse}/>
       </Card>
-      <Cart selection = {selectedCourses}/>
+      <Cart selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
   );
 }
