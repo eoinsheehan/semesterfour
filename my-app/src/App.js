@@ -1,18 +1,15 @@
 import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
+import './components/UI/Card.css'
 
 const App = () => {
 
-  const clicky = () =>{
-    console.log('Eoin')
-  }
-
   return (
-    <div>
+    <div className='main'>
       <Card>
       <Course/>
-      <button onClick={clicky}>Click me</button>
       </Card>
+      <Card className="card2">Module Selection</Card>
     </div>
   );
 }

@@ -2,7 +2,20 @@
     border-radius: 12px;
     background-color: aquamarine;
     padding: 1rem;
-    margin: 2rem auto;
+    margin: 2rem;
     width: 50rem;
-    max-width: 95%;
+    max-width: 50%;
+}
+
+.card2 {
+    border-radius: 12px;
+    background-color: aquamarine;
+    padding: 1rem;
+    margin: 2rem;
+    width: 20rem;
+    max-width: 30%;
+}
+
+.main{
+    display: flex;
 }
