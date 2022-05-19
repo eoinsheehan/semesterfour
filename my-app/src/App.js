@@ -1,15 +1,26 @@
 import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
+import Cart from './components/cart/Cart'
+import {useState} from 'react'
+
 import './components/UI/Card.css'
 
 const App = () => {
 
+  const [selectedCourses,setSelectedCourses] = useState([])
+
+  const addCourse = (newCourse) =>{
+    setSelectedCourses((prevSelectedCourses) =>{
+      return [newCourse,...prevSelectedCourses]
+    })
+  }
+
   return (
     <div className='main'>
       <Card>
-      <Course/>
+      <Course onSelect = {addCourse}/>
       </Card>
-      <Card className="card2">Module Selection</Card>
+      <Cart selection = {selectedCourses}/>
     </div>
   );
 }

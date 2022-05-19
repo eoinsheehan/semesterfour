@@ -12,7 +12,7 @@ const CourseHeading = (props) =>{
         console.log('Props',props.courses)
     }
 
-    let helpme = props.courses.map(course =><CourseList course ={course}/> );
+    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect}course ={course} coursesSelected={props.coursesSelected}/> );
 
     return (
         <div className="course-heading">{props.title}
