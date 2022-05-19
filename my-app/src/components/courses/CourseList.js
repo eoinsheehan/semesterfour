@@ -1,14 +1,10 @@
 import './CourseList.css'
 
-const CourseList = () => {
-
+const CourseList = (props) => {
 
     return(
         <div>
-            <ul>
-                <li>Course 1</li>
-                <li>Course 2</li>
-            </ul>
+        {props.course}
         </div>
     )
 }

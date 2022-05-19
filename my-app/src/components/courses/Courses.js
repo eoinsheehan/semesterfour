@@ -4,11 +4,14 @@ import './Courses.css'
 
 const Courses = () => {
 
-    const themes = ['Artificial Intelligence',
-    'Data Science',
-    'Software Engineering']
+    const courseInformation = [{theme:'Artificial Intelligence',
+    courses:['AI course 1', 'AI course 2']},
+    {theme:'Data Science',
+    courses:['Data course 1', 'Data course 2']},
+    {theme:'Software Engineering',
+    courses:['SE course 1', 'SE course 2']}]
 
-    let testing = themes.map(theme => <CourseHeading title = {theme}/>)
+    let testing = courseInformation.map(data => <CourseHeading title = {data.theme}courses= {data.courses}/>)
 
     return (<div className='courses'>
         <Card>

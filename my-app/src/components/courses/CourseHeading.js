@@ -9,12 +9,15 @@ const CourseHeading = (props) =>{
 
     const toggleCourses = () => {
         setShowContent(!showContent);
+        console.log('Props',props.courses)
     }
+
+    let helpme = props.courses.map(course =><CourseList course ={course}/> );
 
     return (
         <div className="course-heading">{props.title}
         <button onClick={toggleCourses}>Expand</button>
-        {showContent ? <CourseList/>: null}
+        {showContent ? helpme : null}
         </div>
     )
 }
