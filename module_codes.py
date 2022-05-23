@@ -19,35 +19,42 @@ html=request.urlopen(test).read()
 soup = BeautifulSoup(html, "html.parser" )
 details = soup.find("div", {"class": "printBefore"})
 # print(details.find("h1",{"class": "pageTitle"}).contents[0]) # module title
-testing = courseLinks[0]
+testing = courseLinks[1]
 
-# need to get module description here no
+for course in courseLinks:
+    # need to get module description here no
 
-html=request.urlopen(testing).read()
-soup = BeautifulSoup(html, "html.parser" )
-answer = soup.find_all("dt",limit=7)
-answer2 = soup.find_all("dd",limit=7)
+    html=request.urlopen(course).read()
+    soup = BeautifulSoup(html, "html.parser" )
+    answer = soup.find_all("dt",limit=7)
+    answer2 = soup.find_all("dd",limit=7)
 
-for i in range(4,len(answer)):
-    print(f"{answer[i].string}{answer2[i].string}")
+    for i in range(4,len(answer)):
+        print(f"{answer[i].string} {answer2[i].string}")
 
-print("Module Title: ",soup.find("h1",{"class":"pageTitle"}).string)
-print("description:",soup.find("div",{"class":"printBefore"}).contents[4].strip())
+    print("Module Title:",soup.find("h1",{"class":"pageTitle"}).string)
+    print("Module Description:",soup.find("div",{"class":"printBefore"}).contents[4].strip())
 
-assessmentTable = soup.find("table",{"id":"CB100-30Q"})
-# assessment
-assessmentElements = assessmentTable.find_all("tr")[1:]
+    assessmentTable = soup.find("table",{"id":"CB100-30Q"})
+    # assessment
+    assessmentElements = assessmentTable.find_all("tr")[1:]
 
-help = []
-for row in assessmentElements:
-    pieces = row.find_all("td")
-    help.append([pieces[0].string,pieces[1].string,pieces[5].string])
+    help = []
+    for row in assessmentElements:
+        pieces = row.find_all("td")
+        help.append([pieces[0].string,pieces[1].string,pieces[5].string])
 
-print(help)
+    print(help)
 
+    moduleOffering = soup.find("table",{"id":"CB100-98Q"}).find_all("tr")[2:]
 
-# when is the module offered
-
-# print("all the elements \n",assessmentElements[0].string,assessmentElements[1].string,assessmentElements[5].string)
-    
-# get all of the required info from these links generated
+    for row in moduleOffering:
+        offerings = row.find_all("td")
+        result = list(map(lambda x: x.string, offerings))
+        classType = result[0]
+        classTime = result[-1]
+        if(classType=="\xa0"):
+            print("waste of time")
+        else:
+            print('Class Type:',classType)
+            print('Class Time:', classTime)
