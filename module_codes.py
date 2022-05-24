@@ -47,25 +47,24 @@ for course in courseLinks:
         assessmentDetails.append([assessmentDetail[0].string,assessmentDetail[1].string,assessmentDetail[5].string])
 
     moduleOffering = soup.find("table",{"id":"CB100-98Q"}).find_all("tr")[2:]
-
+    moduleClasses = []
     for row in moduleOffering:
         offerings = row.find_all("td")
         result = list(map(lambda x: x.string, offerings))
         classType = result[0]
         classTime = result[-1]
-        # if(classType=="\xa0"):
-        #     print("waste of time")
-        # else:
-        #     print('Class Type:',classType)
-        #     print('Class Time:', classTime)
+        if(classType!="\xa0" and [classType,classTime] not in moduleClasses):
+            moduleClasses.append([classType,classTime])
 
     jsonElement = {f"title": moduleTitle,
     "credits": moduleCredits,
     "trimester": moduleTrimester,
     "lecturer": moduleCoordinator,
-    "description": moduleDescription.get_text().strip()}
+    "description": moduleDescription.get_text().strip(),
+    "classes": moduleClasses
+    }
 
     jsonList.append(jsonElement)
 
-with open('modules.json', 'w') as f:
+with open('./my-app/public/data/data.json', 'w') as f:
     json.dump(jsonList,f)
