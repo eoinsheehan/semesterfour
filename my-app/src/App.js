@@ -1,13 +1,23 @@
 import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
 import Cart from './components/cart/Cart'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 
 import './components/UI/Card.css'
 
 const App = () => {
 
   const [selectedCourses,setSelectedCourses] = useState([])
+  const [courseData,setCourseData] = useState("");
+  
+  useEffect(() => {
+    fetch("./data/data.json")
+      .then((response) => response.json())
+      .then((json) => {
+        console.log(json);
+        setCourseData(json); // unnecessary re rendering, ideally would just be assigned to a regular variable
+      });
+  },[]);
 
   const addCourse = (newCourse) =>{
     setSelectedCourses((prevSelectedCourses) =>{
@@ -26,7 +36,7 @@ const App = () => {
       <Card>
       <Course onSelect = {addCourse}/>
       </Card>
-      <Cart selection = {selectedCourses} onRemove = {removeCourse}/>
+      <Cart testing = {courseData.length >0 && courseData[0]["credits"]}selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
   );
 }

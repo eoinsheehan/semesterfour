@@ -8,6 +8,7 @@ const Cart = (props) => {
     return(
         <Card>
             <h2>Modules Selected</h2>
+            {props.testing}
             {cartContents}
         </Card>
     )
