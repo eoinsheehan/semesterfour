@@ -33,7 +33,7 @@ const App = () => {
 
   return (
     <div className='main'>
-      <Card>
+      <Card className="">
       <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse}/>
       </Card>
       <Cart testing = {courseData.length >0 && courseData}selection = {selectedCourses} onRemove = {removeCourse}/>

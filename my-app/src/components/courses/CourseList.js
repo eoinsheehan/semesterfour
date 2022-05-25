@@ -6,7 +6,7 @@ const CourseList = (props) => {
         props.onSelect(props.course)
     }
     return(
-        <div>
+        <div className='courseItem'>
         {props.course}
         <button onClick={selectCourse}>Select Course</button>
         </div>

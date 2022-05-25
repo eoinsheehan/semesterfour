@@ -1,12 +1,4 @@
-.courses{
-    background-color: coral;
-    height: 70%;
-    width: 90%;
-    padding: 2rem;
-    margin:1rem;
-}
-
-.card.dunno {
+.card.courses {
     width:90%;
     border-radius: 12px;
     background-color: aquamarine;

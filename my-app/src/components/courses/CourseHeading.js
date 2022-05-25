@@ -9,7 +9,7 @@ const CourseHeading = (props) =>{
 
     const toggleCourses = () => {
         setShowContent(!showContent);
-        console.log('Props',props.courses)
+        console.log('Props',props.courses.title)
     }
 
     // filter this by theme before applying map
@@ -18,8 +18,10 @@ const CourseHeading = (props) =>{
     let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} course ={course.title} coursesSelected={props.coursesSelected}/> );
 
     return (
+        <div>
         <div className="course-heading">{props.title}
         <button onClick={toggleCourses}>Expand</button>
+        </div>
         {showContent ? helpme : null}
         </div>
     )

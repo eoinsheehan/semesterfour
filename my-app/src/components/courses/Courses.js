@@ -11,11 +11,11 @@ const Courses = (props) => {
     )
     }
 
-    return (<div className='courses'>
-        <Card className ="dunno">
+    return (
+        <Card className ="courses">
         {content}
         </Card>
-    </div>)
+    )
 }
 
 export default Courses
