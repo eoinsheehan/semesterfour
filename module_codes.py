@@ -24,11 +24,6 @@ for element in streamTitle:
                 "courses":[]}
     filteredList = list(filter(lambda course: course[0]==element, courseLinks))
 
-    # printing out relevant details
-    # html=request.urlopen(test).read()
-    # soup = BeautifulSoup(html, "html.parser" )
-    # details = soup.find("div", {"class": "printBefore"})
-
     for course in filteredList:
         # need to get module description here no
         html=request.urlopen(course[1]).read()
@@ -74,5 +69,5 @@ for element in streamTitle:
         jsonTheme["courses"].append(jsonElement)
     jsonList.append(jsonTheme)
 
-with open('./my-app/public/data/data2.json', 'w') as f:
+with open('./my-app/public/data/data.json', 'w') as f:
     json.dump(jsonList,f)
