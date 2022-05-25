@@ -2,7 +2,6 @@ import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
 import Cart from './components/cart/Cart'
 import {useEffect, useState} from 'react'
-
 import './components/UI/Card.css'
 
 const App = () => {
@@ -19,6 +18,7 @@ const App = () => {
       });
   },[]);
 
+
   const addCourse = (newCourse) =>{
     setSelectedCourses((prevSelectedCourses) =>{
       return [...prevSelectedCourses,newCourse]
@@ -34,9 +34,9 @@ const App = () => {
   return (
     <div className='main'>
       <Card>
-      <Course onSelect = {addCourse}/>
+      <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse}/>
       </Card>
-      <Cart testing = {courseData.length >0 && courseData[0]["credits"]}selection = {selectedCourses} onRemove = {removeCourse}/>
+      <Cart testing = {courseData.length >0 && courseData}selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
   );
 }
