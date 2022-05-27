@@ -5,4 +5,13 @@
     color: aliceblue;
     display: flex;
     justify-content: space-between;
+    border-radius: 12px;
 }
+
+.course-heading button 
+ { cursor: pointer;
+    background-color: transparent;
+font-size: large;
+color: white; 
+border-color: white;
+text-align: left;}

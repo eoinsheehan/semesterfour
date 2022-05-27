@@ -9,13 +9,12 @@ const CourseHeading = (props) =>{
 
     const toggleCourses = () => {
         setShowContent(!showContent);
-        console.log('Props',props.courses.title)
     }
 
     // filter this by theme before applying map
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} course ={course.title} coursesSelected={props.coursesSelected}/> );
+    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} credits = {course.credits}/> );
 
     return (
         <div>
