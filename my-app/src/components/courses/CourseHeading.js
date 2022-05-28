@@ -14,7 +14,7 @@ const CourseHeading = (props) =>{
     // filter this by theme before applying map
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} credits = {course.credits}/> );
+    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
 
     return (
         <div>

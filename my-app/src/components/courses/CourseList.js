@@ -7,14 +7,14 @@ const CourseList = (props) => {
     const [showContent,setShowContent] = useState(false)
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.title.map(t =><CourseDetails credits = {props.credits}/> );
+    let helpme = props.details.map(detail =><CourseDetails name = {Object.keys(detail)} value = {Object.values(detail)}/> );
 
     const toggleCourses = () => {
         setShowContent(!showContent);
     }
 
     const selectCourse = () =>{
-        props.onSelect(props.course)
+        props.onSelect(props.title)
     }
 
     return(

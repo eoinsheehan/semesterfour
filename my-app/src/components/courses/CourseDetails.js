@@ -1,6 +1,6 @@
 const CourseDetails = (props) => {
-
-    return <div>{props.name}</div>
+    
+    return <div>{props.name}:{props.value}</div>
 
 }
 
