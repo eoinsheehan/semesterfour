@@ -59,14 +59,15 @@ for element in streamTitle:
                 moduleClasses.append([classType,classTime])
 
         jsonElement = {f"title": moduleTitle,
-        "credits": moduleCredits,
-        "trimester": moduleTrimester,
-        "lecturer": moduleCoordinator,
-        "description": moduleDescription.get_text().strip(),
-        "classes": moduleClasses
+        "details": [{"credits": moduleCredits},
+        {"trimester": moduleTrimester},
+        {"lecturer": moduleCoordinator},
+        {"description": moduleDescription.get_text().strip()},
+        {"classes": moduleClasses}]
         }
-
+        
         jsonTheme["courses"].append(jsonElement)
+
     jsonList.append(jsonTheme)
 
 with open('./my-app/public/data/data.json', 'w') as f:
