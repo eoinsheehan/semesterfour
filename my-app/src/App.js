@@ -19,15 +19,21 @@ const App = () => {
   },[]);
 
 
+  const dupeCheck = (arr,val) => {
+    return arr.some(el => el.title === val)}
+    
   const addCourse = (newCourse) =>{
+    if(!dupeCheck(selectedCourses,newCourse.title)){
+      console.log("testing",dupeCheck(selectedCourses,newCourse))
     setSelectedCourses((prevSelectedCourses) =>{
       return [...prevSelectedCourses,newCourse]
     })
   }
+  }
 
   const removeCourse = (selection) =>{
     setSelectedCourses((prevSelectedCourses) =>{
-      return prevSelectedCourses.filter(course => course !== selection)
+      return prevSelectedCourses.filter(course => course.title !== selection)
     })
   }
 
@@ -36,7 +42,7 @@ const App = () => {
       <Card className="">
       <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse}/>
       </Card>
-      <Cart testing = {courseData.length >0 && courseData}selection = {selectedCourses} onRemove = {removeCourse}/>
+      <Cart testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
   );
 }

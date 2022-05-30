@@ -6,10 +6,23 @@ const Cart = (props) => {
 
     let filteredCourses;
 
+    let creditCount;
+
     if(props.testing.length >0){
     filteredCourses = props.testing.filter((course) => {
         return course['theme'] ==="Software Engineering"});
         console.log("filtered",filteredCourses)
+    }
+
+    let initialValue = 0;
+
+    if(props.selection.length>0){
+        let sum = props.selection.reduce(
+            (previousValue, currentValue) => previousValue + currentValue.credits,
+            initialValue
+        )
+        console.log("help",typeof sum);
+        creditCount = "Number of credits: " + sum
     }
 
     let cartContents = props.selection.map(course => 
@@ -18,6 +31,7 @@ const Cart = (props) => {
         <Card className="cart">
             <h2>Modules Selected</h2>
             {cartContents}
+            {creditCount}
         </Card>
     )
 }

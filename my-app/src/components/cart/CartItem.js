@@ -1,7 +1,7 @@
 const CartItem = (props) => {
 
     const removeItem = () =>{
-        props.onRemove(props.selection)
+        props.onRemove(props.title)
     }
     return(
         <div>
