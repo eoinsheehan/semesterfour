@@ -13,7 +13,7 @@ const Cart = (props) => {
     }
 
     let cartContents = props.selection.map(course => 
-        <CartItem onRemove = {props.onRemove}selection = {course}/>)
+        <CartItem onRemove = {props.onRemove} title = {course.title} credits = {course.credits}/>)
     return(
         <Card className="cart">
             <h2>Modules Selected</h2>

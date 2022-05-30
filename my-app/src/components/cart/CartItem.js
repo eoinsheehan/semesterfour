@@ -5,7 +5,7 @@ const CartItem = (props) => {
     }
     return(
         <div>
-            {props.selection}
+            {props.title} - {props.credits}
             <button onClick={removeItem}>Remove</button>
         </div>
     )

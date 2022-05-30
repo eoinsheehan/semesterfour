@@ -1,6 +1,8 @@
+import './CourseDetails.css'
+
 const CourseDetails = (props) => {
-    
-    return <div>{props.name}:{props.value}</div>
+
+    return <div className="course-details">{props.name}: {props.value}</div>
 
 }
 
