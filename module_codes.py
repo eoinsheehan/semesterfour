@@ -30,7 +30,7 @@ for element in streamTitle:
         soup = BeautifulSoup(html, "html.parser" )
         answer2 = soup.find_all("dd",limit=7)
 
-        moduleCredits = f"{answer2[4].string}"
+        moduleCredits = float(answer2[4].string)
         moduleTrimester = f"{answer2[5].string}"
         moduleCoordinator = f"{answer2[6].string}"
         moduleTitle = soup.find("h1",{"class":"pageTitle"}).string
