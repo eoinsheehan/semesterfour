@@ -10,11 +10,23 @@ const CourseHeading = (props) =>{
     const toggleCourses = () => {
         setShowContent(!showContent);
     }
-
+    
     // filter this by theme before applying map
+    let semesterFilter = props.courses
+
+    if(props.semester["autumn"]===true && props.semester["spring"]===false){
+        semesterFilter = semesterFilter.filter(course => Object.values(course.details[1])[0].includes("Autumn"));
+    }
+    else if (props.semester["autumn"]===false && props.semester["spring"]===true){
+        semesterFilter = semesterFilter.filter(course => Object.values(course.details[1])[0].includes("Spring"));
+    }
+    else{
+        console.log("need to error handle for no semester selected")
+    }
+
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.courses.map(course =><CourseList onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
+    let helpme = semesterFilter.map(course =><CourseList onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
 
     return (
         <div>

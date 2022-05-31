@@ -10,11 +10,11 @@ const Courses = (props) => {
     const handleChange = (e)=> {
         setIsChecked({...isChecked,[e.target.name]:e.target.checked})
     }
-    
+
     let content;
 
     if(props.testing.length >0){
-    content = props.testing.map(data => <CourseHeading onSelect={props.onSelect} title = {data.theme} courses= {data.courses}/>
+    content = props.testing.map(data => <CourseHeading onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked}/>
     )
     }
 

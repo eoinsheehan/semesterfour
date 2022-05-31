@@ -15,7 +15,6 @@ const CourseList = (props) => {
 
     const selectCourse = () =>{
         props.onSelect({"title":props.title,"credits":Object.values(props.details[0])[0]})
-        console.log("testing",Object.values(props.details[0]))
     }
 
     return(
