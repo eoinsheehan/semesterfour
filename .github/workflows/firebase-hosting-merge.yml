@@ -19,7 +19,7 @@ jobs:
         working-directory: my-app
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entrypoint: /my-app
+          working-directory: my-app
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SEMESTER_FOUR }}'
           channelId: live
