@@ -29,7 +29,7 @@ const Cart = (props) => {
         <CartItem onRemove = {props.onRemove} title = {course.title} credits = {course.credits}/>)
     return(
         <Card className="cart">
-            <h2>Modules</h2>
+            <h2>Module Selection</h2>
             {cartContents}
             {creditCount}
         </Card>
