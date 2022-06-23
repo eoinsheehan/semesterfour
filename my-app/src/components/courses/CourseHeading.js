@@ -1,6 +1,11 @@
 import './CourseHeading.css'
 import './CourseList'
 import CourseList from './CourseList'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react'
 
 const CourseHeading = (props) =>{
@@ -14,32 +19,28 @@ const CourseHeading = (props) =>{
     // filter this by theme before applying map
     let semesterFilter = props.courses
 
-    if(props.semester["autumn"]===true && props.semester["spring"]===false){
+    if (props.semester===false){
         semesterFilter = semesterFilter.filter(course => Object.values(course.details[1])[0].includes("Autumn"));
     }
-    else if (props.semester["autumn"]===false && props.semester["spring"]===true){
-        semesterFilter = semesterFilter.filter(course => Object.values(course.details[1])[0].includes("Spring"));
-    }
-    else{
-        console.log("need to error handle for no semester selected")
-    }
-
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = semesterFilter.map(course =><CourseList id= {course.title} className="accordion-collapse collapse" onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
+    let helpme = semesterFilter.map(course =><CourseList id= {course.title}onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
 
     return (
-
-        <div className="accordion-header">
-        {/* <div className="course-heading">{props.title}
-        <button >Expand</button> */}
-        <button onClick={toggleCourses}  className={showContent ? "accordion-button collapsed" : "accordion-button"} type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <Accordion>
+        <AccordionSummary onClick={toggleCourses}  
+        expandIcon={<ExpandMoreIcon />}
+        aria-controls="panel1a-content"
+        id="panel1a-header"
+        >
         {props.title}
-      </button>
-        {/* </div> */}
+        </AccordionSummary>
+        <AccordionDetails>
+        
         {showContent ? helpme : null}
-        </div>
-
+        
+        </AccordionDetails>
+        </Accordion>
     )
 }
 export default CourseHeading

@@ -1,6 +1,10 @@
 import './CourseList.css'
 import CourseDetails from './CourseDetails'
 import { useState } from 'react';
+import { Accordion, AccordionDetails, AccordionSummary, IconButton, Box } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { FaPlus } from "react-icons/fa";
+
 
 const CourseList = (props) => {
 
@@ -18,16 +22,28 @@ const CourseList = (props) => {
     }
 
     return(
-        <div>
-            <div className='courseItem'>
+            <Accordion expanded={showContent} sx={{backgroundColor: "#D3D3D3"}}>
+                <Box
+        sx={{display:"flex",
+        justifyContent:"space-between",
+        padding:"0.5rem"}}
+        >       <Box>
                 {props.title}
-                <div>
-                <button onClick = {toggleCourses}>Expand</button>
-                <button onClick={selectCourse}>Select Course</button>
-                </div>
-            </div>
+                </Box>
+                <Box>
+                <IconButton aria-label="delete" size="small">
+                <FaPlus onClick={selectCourse}/>
+            </IconButton>
+            <IconButton>
+            <ExpandMoreIcon onClick={toggleCourses} />
+            </IconButton>
+            </Box>
+                </Box>
+                {/* <button onClick={selectCourse}>Select Course</button> */}
+            <AccordionDetails>
         {showContent ? helpme : null}
-        </div>
+        </AccordionDetails>
+        </Accordion>
     )
 }
 

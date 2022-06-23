@@ -1,3 +1,6 @@
+import { IconButton } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 const CartItem = (props) => {
 
     const removeItem = () =>{
@@ -6,7 +9,9 @@ const CartItem = (props) => {
     return(
         <div>
             {props.title} - {props.credits}
-            <button onClick={removeItem}>Remove</button>
+            <IconButton>
+                <DeleteIcon onClick={removeItem} />
+            </IconButton>
         </div>
     )
 }

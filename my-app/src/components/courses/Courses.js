@@ -2,13 +2,14 @@ import CourseHeading from './CourseHeading'
 import Card from '../UI/Card'
 import { useState } from 'react'
 import './Courses.css'
+import { Checkbox, FormControlLabel } from '@mui/material'
 
 const Courses = (props) => {
 
-    const [isChecked,setIsChecked] = useState({"autumn":true,"spring":true});
+    const [isChecked,setIsChecked] = useState(true);
 
-    const handleChange = (e)=> {
-        setIsChecked({...isChecked,[e.target.name]:e.target.checked})
+    const handleChange = ()=> {
+        setIsChecked(!isChecked)
     }
 
     let content;
@@ -20,10 +21,12 @@ const Courses = (props) => {
 
     return (
         <div>
-        <input onChange = {handleChange} type="checkbox" id="vehicle1" name="autumn" value="autumn" checked={isChecked["autumn"]}/>
-        <label for="autumn"> Autumn</label>
-        <input onChange = {handleChange} type="checkbox" id="vehicle2" name="spring" value="spring" checked={isChecked["spring"]}/>
-        <label for="spring"> Spring</label>
+            <FormControlLabel
+          value="spring"
+          label="Include Spring: "
+          labelPlacement="start"
+          control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"/>}
+        />
         <Card className ="courses">
         {content}
         </Card>
