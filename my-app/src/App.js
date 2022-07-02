@@ -2,6 +2,7 @@ import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
 import Cart from './components/cart/Cart'
 import {useEffect, useState} from 'react'
+import './App.css'
 import './components/UI/Card.css'
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
     return arr.some(el => el.title === val)}
     
   const addCourse = (newCourse) =>{
+    
     if(!dupeCheck(selectedCourses,newCourse.title)){
       console.log("testing",dupeCheck(selectedCourses,newCourse))
     setSelectedCourses((prevSelectedCourses) =>{
@@ -30,6 +32,8 @@ const App = () => {
     })
   }
   }
+
+  console.log("selected",selectedCourses)
 
   const removeCourse = (selection) =>{
     setSelectedCourses((prevSelectedCourses) =>{
@@ -39,10 +43,10 @@ const App = () => {
 
   return (
     <div className='main'>
-      <Card className="">
-      <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse}/>
+      <Card className="course-container">
+      <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses}/>
       </Card>
-      <Cart testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
+      <Cart key={Math.random()} testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
   );
 }

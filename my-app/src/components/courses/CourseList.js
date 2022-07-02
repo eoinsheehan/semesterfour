@@ -1,17 +1,17 @@
 import './CourseList.css'
 import CourseDetails from './CourseDetails'
 import { useState } from 'react';
-import { Accordion, AccordionDetails, AccordionSummary, IconButton, Box } from '@mui/material';
+import { Accordion, AccordionDetails, IconButton, Box } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FaPlus } from "react-icons/fa";
-
+import { FaPlus, FaMinusCircle } from "react-icons/fa";
 
 const CourseList = (props) => {
 
-    const [showContent,setShowContent] = useState(false)
+    const [showContent,setShowContent] = useState(false);
+    const [selected] = useState();
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.details.map(detail =><CourseDetails name = {Object.keys(detail)} value = {Object.values(detail)}/> );
+    let helpme = props.details.map(detail =><CourseDetails key={Math.random()} name = {Object.keys(detail)} value = {Object.values(detail)}/> );
 
     const toggleCourses = () => {
         setShowContent(!showContent);
@@ -19,6 +19,7 @@ const CourseList = (props) => {
 
     const selectCourse = () =>{
         props.onSelect({"title":props.title,"credits":Object.values(props.details[0])[0]})
+        console.log("coursename",props.title)
     }
 
     return(
@@ -32,7 +33,7 @@ const CourseList = (props) => {
                 </Box>
                 <Box>
                 <IconButton aria-label="delete" size="small">
-                <FaPlus onClick={selectCourse}/>
+                {selected ?<FaMinusCircle/>:<FaPlus onClick={selectCourse}/>}
             </IconButton>
             <IconButton>
             <ExpandMoreIcon onClick={toggleCourses} />

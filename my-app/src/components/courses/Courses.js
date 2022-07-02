@@ -1,8 +1,7 @@
 import CourseHeading from './CourseHeading'
-import Card from '../UI/Card'
 import { useState } from 'react'
 import './Courses.css'
-import { Checkbox, FormControlLabel } from '@mui/material'
+import { Checkbox, FormControlLabel, Typography } from '@mui/material'
 
 const Courses = (props) => {
 
@@ -15,7 +14,7 @@ const Courses = (props) => {
     let content;
 
     if(props.testing.length >0){
-    content = props.testing.map(data => <CourseHeading onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked}/>
+    content = props.testing.map(data => <CourseHeading key ={data.theme}onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked} selection = {props.selection}/>
     )
     }
 
@@ -23,13 +22,14 @@ const Courses = (props) => {
         <div>
             <FormControlLabel
           value="spring"
-          label="Include Spring: "
+          label={<Typography variant="h6" color="textSecondary">Include Spring</Typography>}
           labelPlacement="start"
-          control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"/>}
+          control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"
+        />}
         />
-        <Card className ="courses">
+
         {content}
-        </Card>
+  
         </div>
     )
 }

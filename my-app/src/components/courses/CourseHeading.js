@@ -4,7 +4,6 @@ import CourseList from './CourseList'
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react'
 
@@ -24,7 +23,7 @@ const CourseHeading = (props) =>{
     }
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = semesterFilter.map(course =><CourseList id= {course.title}onSelect={props.onSelect} title ={course.title} coursesSelected={props.coursesSelected} details = {course.details}/> );
+    let helpme = semesterFilter.map(course =><CourseList key= {course.Title} onSelect={props.onSelect} title ={course.Title}  details = {course.details} selection = {props.selection}/> );
 
     return (
         <Accordion>
@@ -36,9 +35,7 @@ const CourseHeading = (props) =>{
         {props.title}
         </AccordionSummary>
         <AccordionDetails>
-        
         {showContent ? helpme : null}
-        
         </AccordionDetails>
         </Accordion>
     )
