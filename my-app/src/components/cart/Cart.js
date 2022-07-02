@@ -1,5 +1,6 @@
 import Card from '../UI/Card'
 import CartItem from './CartItem'
+import { Box } from '@mui/material'
 import './Cart.css'
 
 const Cart = (props) => {
@@ -31,8 +32,11 @@ const Cart = (props) => {
         <Card className="cart">
             <h2>Module Selection
             </h2>
+            <Box sx={{padding:"1rem 0.25rem"}}>
             {cartContents}
-            {creditCount}
+            </Box>
+            <h4>{creditCount}</h4>
+
         </Card>
     )
 }

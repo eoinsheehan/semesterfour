@@ -9,8 +9,8 @@ const CartItem = (props) => {
     return(
         <div>
             {props.title} - {props.credits}
-            <IconButton>
-                <DeleteIcon onClick={removeItem} />
+            <IconButton onClick={removeItem} sx={{color:"black"}}>
+                <DeleteIcon  />
             </IconButton>
         </div>
     )
