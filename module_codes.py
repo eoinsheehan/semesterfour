@@ -25,6 +25,7 @@ for element in streamTitle:
     filteredList = list(filter(lambda course: course[0]==element, courseLinks))
 
     for course in filteredList:
+        print(course)
         # need to get module description here no
         html=request.urlopen(course[1]).read()
         soup = BeautifulSoup(html, "html.parser" )
@@ -48,22 +49,23 @@ for element in streamTitle:
             assessmentDetail = row.find_all("td")
             assessmentDetails.append([assessmentDetail[0].string,assessmentDetail[1].string,assessmentDetail[5].string])
 
-        moduleOffering = soup.find("table",{"id":"CB100-98Q"}).find_all("tr")[2:]
-        moduleClasses = []
-        for row in moduleOffering:
-            offerings = row.find_all("td")
-            result = list(map(lambda x: x.string, offerings))
-            classType = result[0]
-            classTime = result[-1]
-            if(classType!="\xa0" and [classType,classTime] not in moduleClasses):
-                moduleClasses.append([classType,classTime])
+        # moduleOffering = soup.find("table",{"id":"CB100-98Q"}).find_all("tr")[2:]
+        # moduleClasses = []
+        # for row in moduleOffering:
+        #     offerings = row.find_all("td")
+        #     result = list(map(lambda x: x.string, offerings))
+        #     classType = result[0]
+        #     classTime = result[-1]
+        #     if(classType!="\xa0" and [classType,classTime] not in moduleClasses):
+        #         moduleClasses.append([classType,classTime])
 
-        jsonElement = {f"title": moduleTitle,
-        "details": [{"credits": moduleCredits},
-        {"trimester": moduleTrimester},
-        {"lecturer": moduleCoordinator},
-        {"description": moduleDescription.get_text().strip()},
-        {"classes": moduleClasses}]
+        jsonElement = {f"Title": moduleTitle,
+        "details": [{"Credits": moduleCredits},
+        {"Trimester": moduleTrimester},
+        {"Lecturer": moduleCoordinator},
+        {"Description": moduleDescription.get_text().strip()},
+        # {"Classes": moduleClasses},
+        {"Assessment":assessmentDetails}]
         }
         
         jsonTheme["courses"].append(jsonElement)
