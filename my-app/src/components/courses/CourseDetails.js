@@ -43,7 +43,7 @@ const CourseDetails = (props) => {
               <TableCell component="th" scope="row" sx={{width:"20%"}}>
                 {props.name}
               </TableCell>
-              <TableCell align="left">{content}</TableCell>
+              <TableCell align="left">{props.name[0]==="Hyperlink"?<a href={content} target="_blank" rel="noreferrer">Official Module Description</a>:content}</TableCell>
             </TableRow>
           ))}
         </TableBody>
