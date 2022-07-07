@@ -31,8 +31,9 @@ const CourseHeading = (props) =>{
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
+        sx={{paddingLeft:"2rem"}}
         >
-        {props.title}
+        <h4>{props.title}</h4>
         </AccordionSummary>
         <AccordionDetails>
         {showContent ? helpme : null}

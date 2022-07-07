@@ -27,9 +27,9 @@ const CourseList = (props) => {
                 <Box
         sx={{display:"flex",
         justifyContent:"space-between",
-        padding:"0.5rem"}}
+        padding:"1rem 2rem"}}
         >       <Box>
-                {props.title}
+                <h5>{props.title}</h5>
                 </Box>
                 <Box>
                 <IconButton aria-label="delete" size="small">

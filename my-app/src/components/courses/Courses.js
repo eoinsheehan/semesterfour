@@ -22,10 +22,11 @@ const Courses = (props) => {
         <div>
             <FormControlLabel
           value="spring"
-          label={<Typography variant="h5" color="textSecondary">Include Spring</Typography>}
+          label={<Typography variant="h5" >Include Spring</Typography>}
           labelPlacement="start"
-          control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"
+          control={<Checkbox color="default" onChange = {handleChange} checked={isChecked} name="spring" 
         />}
+        sx={{paddingBottom:"2rem"}}
         />
 
         {content}
