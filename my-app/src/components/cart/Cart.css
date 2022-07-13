@@ -1,5 +1,6 @@
 .card.cart{
     max-width: 25%;
+    min-width:400px;
     height: 50%;
     margin:1rem;
     padding-bottom: 5rem;

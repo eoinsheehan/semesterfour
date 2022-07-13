@@ -35,15 +35,15 @@ const CourseDetails = (props) => {
     return (
             <TableContainer component={Paper}>
       <Table aria-label="simple table">
-        <TableBody>
+        <TableBody sx ={{backgroundColor:"#1B2430"}}>
           {props.name.map((name) => (
             <TableRow
               key={name}
             >
-              <TableCell component="th" scope="row" sx={{width:"20%"}}>
+              <TableCell component="th" scope="row" sx={{width:"20%", color:"white"}}>
                 {props.name}
               </TableCell>
-              <TableCell align="left">{props.name[0]==="Hyperlink"?<a href={content} target="_blank" rel="noreferrer">Official Module Description</a>:content}</TableCell>
+              <TableCell align="left"  sx={{ color:"white"}}>{props.name[0]==="Hyperlink"?<a href={content} target="_blank" rel="noreferrer">Official Module Description</a>:content}</TableCell>
             </TableRow>
           ))}
         </TableBody>
