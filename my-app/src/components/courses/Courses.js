@@ -1,7 +1,8 @@
 import CourseHeading from './CourseHeading'
+import TextField from '@mui/material/TextField';
 import { useState } from 'react'
 import './Courses.css'
-import { Checkbox, FormControlLabel, Typography } from '@mui/material'
+import { Checkbox, FormControlLabel, Typography, Box } from '@mui/material'
 
 const Courses = (props) => {
 
@@ -19,7 +20,8 @@ const Courses = (props) => {
     }
 
     return (
-        <div>
+        <Box>
+            <Box sx={{display:"flex", alignItems:"center",justifyContent:"space-around", paddingBottom:"1rem"}}>
             <FormControlLabel
           value="spring"
           label={<Typography variant="h6" color="textSecondary">Include Spring</Typography>}
@@ -27,10 +29,12 @@ const Courses = (props) => {
           control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"
         />}
         />
+        <input type="text" id="searchbar"></input>
+        </Box>
 
         {content}
   
-        </div>
+        </Box>
     )
 }
 

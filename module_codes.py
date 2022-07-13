@@ -26,6 +26,7 @@ for element in streamTitle:
 
     for course in filteredList:
         # need to get module description here no
+        hyperlink= course[1]
         html=request.urlopen(course[1]).read()
         soup = BeautifulSoup(html, "html.parser" )
         answer2 = soup.find_all("dd",limit=7)
@@ -46,7 +47,7 @@ for element in streamTitle:
         assessmentDetails = []
         for row in assessmentElements:
             assessmentDetail = row.find_all("td")
-            assessmentDetails.append([assessmentDetail[0].string,assessmentDetail[1].string,assessmentDetail[5].string])
+            assessmentDetails.append([assessmentDetail[0].string,assessmentDetail[1].string,assessmentDetail[5].string,""])
 
         moduleOffering = soup.find("table",{"id":"CB100-98Q"}).find_all("tr")[2:]
         moduleClasses = []
@@ -58,12 +59,15 @@ for element in streamTitle:
             if(classType!="\xa0" and [classType,classTime] not in moduleClasses):
                 moduleClasses.append([classType,classTime])
 
-        jsonElement = {f"title": moduleTitle,
-        "details": [{"credits": moduleCredits},
-        {"trimester": moduleTrimester},
-        {"lecturer": moduleCoordinator},
-        {"description": moduleDescription.get_text().strip()},
-        {"classes": moduleClasses}]
+        jsonElement = {f"Title": moduleTitle,
+        "details": [
+        {"Credits": moduleCredits},
+        {"Trimester": moduleTrimester},
+        {"Lecturer": moduleCoordinator},
+        {"Description": moduleDescription.get_text().strip()},
+        # {"Classes": moduleClasses},
+        {"Assessment":assessmentDetails},
+        {"Hyperlink":hyperlink}]
         }
         
         jsonTheme["courses"].append(jsonElement)
