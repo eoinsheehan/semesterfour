@@ -15,7 +15,7 @@ const Courses = (props) => {
     let content;
 
     if(props.testing.length >0){
-    content = props.testing.map(data => <CourseHeading key ={data.theme}onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked} selection = {props.selection}/>
+    content = props.testing.map(data => <CourseHeading key ={data.theme}onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked} selection = {props.selection} onRemove = {props.onRemove}/>
     )
     }
 

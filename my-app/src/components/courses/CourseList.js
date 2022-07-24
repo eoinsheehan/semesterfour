@@ -1,6 +1,6 @@
 import './CourseList.css'
 import CourseDetails from './CourseDetails'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Accordion, AccordionDetails, IconButton, Box } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FaPlus, FaMinusCircle } from "react-icons/fa";
@@ -8,18 +8,38 @@ import { FaPlus, FaMinusCircle } from "react-icons/fa";
 const CourseList = (props) => {
 
     const [showContent,setShowContent] = useState(false);
-    const [selected] = useState();
+    const [selected,setSelected] = useState(false);
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.details.map(detail =><CourseDetails key={Math.random()} name = {Object.keys(detail)} value = {Object.values(detail)}/> );
+    let helpme = props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> );
 
     const toggleCourses = () => {
         setShowContent(!showContent);
     }
 
+    useEffect(()=>{
+        // if course in props.selection 
+        let selectionCheck = props.selection.filter((course)=>course.title=== props.title);
+        if(selectionCheck.length>0){
+            setSelected(true)
+        }
+        else{
+            setSelected(false)
+        }
+
+    },[props.selection,props.title])
+
     const selectCourse = () =>{
         props.onSelect({"title":props.title,"credits":Object.values(props.details[0])[0]})
-        console.log("coursename",props.title)
+        setSelected(!selected)
+    
+    }
+
+    const removeCourse = () =>{
+        props.onRemove(props.title)
+        setSelected(!selected)
+        
+
     }
 
     return(
@@ -32,9 +52,7 @@ const CourseList = (props) => {
                 {props.title}
                 </Box>
                 <Box>
-                <IconButton aria-label="delete" size="small">
-                {selected ?<FaMinusCircle/>:<FaPlus onClick={selectCourse}/>}
-            </IconButton>
+                {selected ?<IconButton aria-label="delete" size="small"  onClick={removeCourse}><FaMinusCircle/></IconButton>:<IconButton aria-label="delete" size="small"  onClick={selectCourse}><FaPlus/></IconButton>}
             <IconButton>
             <ExpandMoreIcon onClick={toggleCourses} />
             </IconButton>

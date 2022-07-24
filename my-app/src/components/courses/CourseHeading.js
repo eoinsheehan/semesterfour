@@ -23,7 +23,7 @@ const CourseHeading = (props) =>{
     }
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = semesterFilter.map(course =><CourseList key= {course.Title} onSelect={props.onSelect} title ={course.Title}  details = {course.details} selection = {props.selection}/> );
+    let helpme = semesterFilter.map(course =><CourseList key= {course.Title} onSelect={props.onSelect} title ={course.Title}  details = {course.details} selection = {props.selection} onRemove={props.onRemove}/> );
 
     return (
         <Accordion>

@@ -21,7 +21,6 @@ const Cart = (props) => {
             (previousValue, currentValue) => previousValue + currentValue.credits,
             initialValue
         )
-        console.log("help",typeof sum);
         creditCount = "Number of credits: " + sum
     }
 

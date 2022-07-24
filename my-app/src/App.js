@@ -44,7 +44,7 @@ const App = () => {
   return (
     <div className='main'>
       <Card className="course-container">
-      <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses}/>
+      <Course testing = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses} onRemove = {removeCourse}/>
       </Card>
       <Cart key={Math.random()} testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
