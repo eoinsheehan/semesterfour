@@ -27,7 +27,7 @@ const Filter = (props) =>{
         </IconButton>
         <input type="text" id="searchbar"></input>
         </Box>
-        <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white"}}>
+        <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white",width:"100%", borderRadius:"12px"}}>
         {showFilters?filterContent:null}
         </Box>
     </Box>

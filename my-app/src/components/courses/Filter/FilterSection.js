@@ -34,12 +34,12 @@ const FilterSection = (props) =>{
 
   
     return(
-<FormControl component="fieldset" s>
+<Box  sx={{display:"flex",flexDirection:"column",maxHeight:"250px"}}>
       <FormLabel component="legend">{props.title}</FormLabel>
-    <FormGroup >
+    <Box sx={{overflowY:"auto",width:"100%"}}>
     {filterOptions}
-    </FormGroup>
-</FormControl>
+    </Box>
+</Box>
 
     )
 }

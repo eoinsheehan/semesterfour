@@ -3,7 +3,7 @@ import { Checkbox, FormControlLabel, Typography, Box, IconButton } from '@mui/ma
 const FilterOption = (props) =>{
 
     return(
-        <FormControlLabel control={<Checkbox defaultChecked size="small"/>} label={props.content} />
+        <FormControlLabel sx={{display:"block"}}control={<Checkbox defaultChecked size="small"/>} label={props.content} />
 
     )
 }
