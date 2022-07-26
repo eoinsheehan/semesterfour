@@ -1,5 +1,5 @@
 import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
-import { Checkbox, FormControlLabel, Typography, Box, IconButton } from '@mui/material'
+import { Checkbox, FormControlLabel, Typography, Box, IconButton, Button } from '@mui/material'
 import { useState } from 'react';
 import FilterSection from './FilterSection';
 
@@ -17,19 +17,22 @@ const Filter = (props) =>{
         setShowFilters(!showFilters)
     }
 
-    let filterContent = filterSections.map(section => <FilterSection key={section} title={section} themes={props.themes} lecturers={props.lecturers} courseData={props.courseData}></FilterSection>)
+    let filterContent = <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white",width:"100%", borderRadius:"12px",flexDirection:"column"}}><Box sx={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>{filterSections.map(section => <FilterSection key={section} title={section} themes={props.themes} lecturers={props.lecturers} courseData={props.courseData}></FilterSection>)}</Box>
+    <Box sx={{display:"flex",justifyContent:"flex-end"}}>
+        <Button variant="contained" size="small" sx={{margin:"1rem 0.5rem"}}>Apply</Button>
+        <Button variant="contained" size="small" color="error" sx={{margin:"1rem 0.5rem"}}>Reset</Button>
+    </Box>
+    </Box>
 
     return(
-        <Box sx={{display:"flex", alignItems:"flex-start",justifyContent:"space-around", paddingBottom:"1rem",flexDirection:"column"}}>
+        <Box sx={{display:"flex", alignItems:"flex-start",justifyContent:"space-around", paddingBottom:"1rem",flexDirection:"column",transition:"height 2s linear 1s"}}>
         <Box sx={{display:"flex"}}>
         <IconButton onClick={toggleFilters}>
         <FilterAltRoundedIcon/>
         </IconButton>
         <input type="text" id="searchbar"></input>
         </Box>
-        <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white",width:"100%", borderRadius:"12px"}}>
         {showFilters?filterContent:null}
-        </Box>
     </Box>
     )
 }
