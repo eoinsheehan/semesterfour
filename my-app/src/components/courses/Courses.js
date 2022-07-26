@@ -1,37 +1,30 @@
 import CourseHeading from './CourseHeading'
-import TextField from '@mui/material/TextField';
 import { useState } from 'react'
 import './Courses.css'
-import { Checkbox, FormControlLabel, Typography, Box } from '@mui/material'
+import { Box } from '@mui/material'
+import Filter from './Filter/Filter'
 
 const Courses = (props) => {
 
     const [isChecked,setIsChecked] = useState(true);
+
 
     const handleChange = ()=> {
         setIsChecked(!isChecked)
     }
 
     let content;
+    let courseThemes;
 
-    if(props.testing.length >0){
-    content = props.testing.map(data => <CourseHeading key ={data.theme}onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked} selection = {props.selection} onRemove = {props.onRemove}/>
+    if(props.courseData.length >0){
+    courseThemes = props.courseData.map(data=>data.theme)
+    content = props.courseData.map(data => <CourseHeading key ={data.theme} onSelect={props.onSelect} title = {data.theme} courses= {data.courses} semester = {isChecked} selection = {props.selection} onRemove = {props.onRemove}/>
     )
     }
 
     return (
         <Box>
-            <Box sx={{display:"flex", alignItems:"center",justifyContent:"space-around", paddingBottom:"1rem"}}>
-            <FormControlLabel
-          value="spring"
-          label={<Typography variant="h6" color="textSecondary">Include Spring</Typography>}
-          labelPlacement="start"
-          control={<Checkbox onChange = {handleChange} checked={isChecked} name="spring"
-        />}
-        />
-        <input type="text" id="searchbar"></input>
-        </Box>
-
+            <Filter handleChange={handleChange} isChecked={isChecked} themes={courseThemes} lecturers={props.lecturers} courseData={props.courseData}/>
         {content}
   
         </Box>
