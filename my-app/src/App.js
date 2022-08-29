@@ -9,7 +9,6 @@ const App = () => {
 
   const [selectedCourses,setSelectedCourses] = useState([])
   const [courseData,setCourseData] = useState("");
-  let lecturers;
   
   useEffect(() => {
     fetch("./data/data.json")
@@ -20,14 +19,7 @@ const App = () => {
       });
   },[]);
 
-  useEffect(() => {
-    if(courseData !==""){
-    lecturers = [...new Set(courseData.map(theme =>theme.courses.map(course =>course.details[2].Lecturer)).flat())] 
-    console.log("list of lecturers", lecturers)
-    }
-  },[courseData]);
-
-
+ 
 
   const dupeCheck = (arr,val) => {
     return arr.some(el => el.title === val)}
@@ -51,7 +43,7 @@ const App = () => {
   return (
     <div className='main'>
       <Card className="course-container">
-      <Course courseData = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses} onRemove = {removeCourse} lecturers={lecturers}/>
+      <Course courseData = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses} onRemove = {removeCourse} />
       </Card>
       <Cart key={Math.random()} testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
     </div>
