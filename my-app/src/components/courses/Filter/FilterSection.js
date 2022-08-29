@@ -1,6 +1,7 @@
-import { Checkbox, FormControlLabel, Typography, Box, IconButton, FormGroup, FormLabel, FormControl } from '@mui/material'
+import { Box} from '@mui/material'
 import { useEffect, useState } from 'react';
 import FilterOption from './FilterOption'
+
 
 
 
@@ -34,12 +35,17 @@ const FilterSection = (props) =>{
 
   
     return(
-<Box  sx={{display:"flex",flexDirection:"column",maxHeight:"250px"}}>
-      <FormLabel component="legend">{props.title}</FormLabel>
-    <Box sx={{overflowY:"auto",width:"100%"}}>
-    {filterOptions}
-    </Box>
-</Box>
+
+        <Box sx={{maxHeight:"200px",display:"flex",flexDirection:"column",marginLeft:"2rem"}}>
+        <Box sx={{border:"1px solid black", backgroundColor:"orange",width:"40%"}}>
+        <h5>{props.title}</h5>
+        </Box>
+        <Box sx={{overflowY:"auto"}}>
+        {filterOptions}
+        </Box>
+        </Box>
+
+
 
     )
 }

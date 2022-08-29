@@ -1,8 +1,19 @@
 import Card from '../UI/Card'
 import CartItem from './CartItem'
 import './Cart.css'
+import { useEffect, useRef } from 'react'
 
 const Cart = (props) => {
+    const isMounted = useRef(false);
+
+        useEffect(() => {
+          if (isMounted.current) {
+            console.log("never again")
+          } else {
+            console.log("something")
+            isMounted.current = true;
+          }
+  },[]);
 
     let filteredCourses;
 

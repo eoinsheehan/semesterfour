@@ -1,5 +1,5 @@
 import FilterAltRoundedIcon from '@mui/icons-material/FilterAltRounded';
-import { Checkbox, FormControlLabel, Typography, Box, IconButton, Button } from '@mui/material'
+import {Box, IconButton, Button } from '@mui/material'
 import { useState } from 'react';
 import FilterSection from './FilterSection';
 
@@ -17,7 +17,7 @@ const Filter = (props) =>{
         setShowFilters(!showFilters)
     }
 
-    let filterContent = <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white",width:"100%", borderRadius:"12px",flexDirection:"column"}}><Box sx={{display:"flex",flexDirection:"row",justifyContent:"space-evenly"}}>{filterSections.map(section => <FilterSection key={section} title={section} themes={props.themes} lecturers={props.lecturers} courseData={props.courseData}></FilterSection>)}</Box>
+    let filterContent = <Box sx={{display:"flex",justifyContent:"space-between",backgroundColor:"white",width:"100%", borderRadius:"12px",flexDirection:"column"}}><Box sx={{display:"flex",flexDirection:"column",justifyContent:"space-evenly",marginTop:"2rem"}}>{filterSections.map(section => <FilterSection key={section} title={section} themes={props.themes} lecturers={props.lecturers} courseData={props.courseData}></FilterSection>)}</Box>
     <Box sx={{display:"flex",justifyContent:"flex-end"}}>
         <Button variant="contained" size="small" sx={{margin:"1rem 0.5rem"}}>Apply</Button>
         <Button variant="contained" size="small" color="error" sx={{margin:"1rem 0.5rem"}}>Reset</Button>

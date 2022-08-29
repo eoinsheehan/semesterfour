@@ -42,8 +42,6 @@ const App = () => {
   }
   }
 
-  console.log("selected",selectedCourses)
-
   const removeCourse = (selection) =>{
     setSelectedCourses((prevSelectedCourses) =>{
       return prevSelectedCourses.filter(course => course.title !== selection)
