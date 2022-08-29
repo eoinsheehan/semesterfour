@@ -2,8 +2,19 @@ import Card from '../UI/Card'
 import CartItem from './CartItem'
 import { Box } from '@mui/material'
 import './Cart.css'
+import { useEffect, useRef } from 'react'
 
 const Cart = (props) => {
+    const isMounted = useRef(false);
+
+        useEffect(() => {
+          if (isMounted.current) {
+            console.log("never again")
+          } else {
+            console.log("something")
+            isMounted.current = true;
+          }
+  },[]);
 
     let filteredCourses;
 
@@ -22,7 +33,6 @@ const Cart = (props) => {
             (previousValue, currentValue) => previousValue + currentValue.credits,
             initialValue
         )
-        console.log("help",typeof sum);
         creditCount = "Number of credits: " + sum
     }
 

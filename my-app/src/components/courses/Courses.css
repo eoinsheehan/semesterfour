@@ -5,3 +5,9 @@
     margin: 1rem;
     max-width: 100%;
 }
+
+#searchbar{
+    margin-left: 2rem;
+    border-radius: 10px;
+    border:1px solid black;
+}
