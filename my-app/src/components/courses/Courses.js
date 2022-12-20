@@ -1,7 +1,5 @@
 import CourseHeading from './CourseHeading'
 import { useState} from 'react'
-import './Courses.css'
-import { Box } from '@mui/material'
 
 const Courses = (props) => {
 
@@ -14,10 +12,9 @@ const Courses = (props) => {
     }
 
     return (
-        <Box>
-                   {content}
-  
-        </Box>
+        <div id="courses" className="border-2">
+            <p className="text-left text-blue-900">{content}</p>
+        </div>
     )
 }
 

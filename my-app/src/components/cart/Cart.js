@@ -1,31 +1,29 @@
 import Card from '../UI/Card'
 import CartItem from './CartItem'
-import './Cart.css'
 import { useEffect, useRef } from 'react'
 
 const Cart = (props) => {
+
+    let filteredCourses;
+    let creditCount;
+    let initialValue = 0;
+
     const isMounted = useRef(false);
 
         useEffect(() => {
           if (isMounted.current) {
             console.log("never again")
           } else {
-            console.log("something")
+            console.log("do something first time only")
             isMounted.current = true;
           }
   },[]);
-
-    let filteredCourses;
-
-    let creditCount;
 
     if(props.testing.length >0){
     filteredCourses = props.testing.filter((course) => {
         return course['theme'] ==="Software Engineering"});
         console.log("filtered",filteredCourses)
     }
-
-    let initialValue = 0;
 
     if(props.selection.length>0){
         let sum = props.selection.reduce(
@@ -38,12 +36,13 @@ const Cart = (props) => {
     let cartContents = props.selection.map(course => 
         <CartItem onRemove = {props.onRemove} title = {course.title} credits = {course.credits}/>)
     return(
-        <Card className="cart">
-            <h2>Module Selection
-            </h2>
+        <div className='text-black px-8 py-6'>
+            <p className='text-5xl'>Module Selection</p>
             {cartContents}
+            <p className="text-2xl font-bold">
             {creditCount}
-        </Card>
+            </p>
+        </div>
     )
 }
 

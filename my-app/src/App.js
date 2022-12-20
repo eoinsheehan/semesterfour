@@ -2,8 +2,6 @@ import Course from './components/courses/Courses'
 import Card from './components/UI/Card'
 import Cart from './components/cart/Cart'
 import {useEffect, useState} from 'react'
-import './App.css'
-import './components/UI/Card.css'
 
 const App = () => {
 
@@ -49,11 +47,13 @@ const App = () => {
   }
 
   return (
-    <div className='main'>
-      <Card className="course-container">
+    <div className='border-2 flex bg-gray-300 font-mono'>
+      <div className='w-3/5'>
       <Course courseData = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses} onRemove = {removeCourse} lecturers={lecturers}/>
-      </Card>
+      </div>
+      <div className='w-2/5'>
       <Cart key={Math.random()} testing = {courseData.length >0 && courseData} selection = {selectedCourses} onRemove = {removeCourse}/>
+      </div>
     </div>
   );
 }

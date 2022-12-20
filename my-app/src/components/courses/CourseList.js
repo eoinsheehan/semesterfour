@@ -1,8 +1,6 @@
-import './CourseList.css'
 import CourseDetails from './CourseDetails'
 import { useEffect, useState } from 'react';
 import { Accordion, AccordionDetails, IconButton, Box } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { FaPlus, FaMinusCircle } from "react-icons/fa";
 
 const CourseList = (props) => {
@@ -54,7 +52,12 @@ const CourseList = (props) => {
                 <Box>
                 {selected ?<IconButton aria-label="delete" size="small"  onClick={removeCourse}><FaMinusCircle/></IconButton>:<IconButton aria-label="delete" size="small"  onClick={selectCourse}><FaPlus/></IconButton>}
             <IconButton>
-            <ExpandMoreIcon onClick={toggleCourses} />
+            <svg onClick={toggleCourses}
+            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+</svg>
+
+             
             </IconButton>
             </Box>
                 </Box>
