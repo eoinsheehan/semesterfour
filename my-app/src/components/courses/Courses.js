@@ -12,7 +12,7 @@ const Courses = (props) => {
     }
 
     return (
-        <div id="courses" className="border-2">
+        <div id="courses" className="border-2 bg-gray-300">
             <p className="text-left text-blue-900">{content}</p>
         </div>
     )

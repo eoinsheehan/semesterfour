@@ -1,6 +1,5 @@
 import CourseDetails from './CourseDetails'
 import { useEffect, useState } from 'react';
-import { Accordion, AccordionDetails, IconButton, Box } from '@mui/material';
 import { FaPlus, FaMinusCircle } from "react-icons/fa";
 
 const CourseList = (props) => {
@@ -9,7 +8,7 @@ const CourseList = (props) => {
     const [selected,setSelected] = useState(false);
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> );
+
 
     const toggleCourses = () => {
         setShowContent(!showContent);
@@ -41,31 +40,25 @@ const CourseList = (props) => {
     }
 
     return(
-            <Accordion expanded={showContent} sx={{backgroundColor: "#D3D3D3"}}>
-                <Box
-        sx={{display:"flex",
-        justifyContent:"space-between",
-        padding:"0.5rem"}}
-        >       <Box>
-                {props.title}
-                </Box>
-                <Box>
-                {selected ?<IconButton aria-label="delete" size="small"  onClick={removeCourse}><FaMinusCircle/></IconButton>:<IconButton aria-label="delete" size="small"  onClick={selectCourse}><FaPlus/></IconButton>}
-            <IconButton>
-            <svg onClick={toggleCourses}
+            <div className='bg-gray-300 text-black space-y-4'expanded={showContent}>
+                <div className='flex justify-between items-center'>
+                <div className='flex space-x-4 items-center'>
+                <p>{props.title}</p>
+                <div>
+                {selected ?<div aria-label="delete" size="small"  onClick={removeCourse}><FaMinusCircle/></div>:<div aria-label="delete" size="small"  onClick={selectCourse}><FaPlus/></div>}
+                </div>
+                </div>
+            <div>
+            <svg className={showContent ? "w-6 h-6 rotate-180 transition ease-in-out duration-500": "w-6 h-6 transition ease-in-out duration-500"}onClick={toggleCourses}
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 </svg>
-
-             
-            </IconButton>
-            </Box>
-                </Box>
-                {/* <button onClick={selectCourse}>Select Course</button> */}
-            <AccordionDetails>
-        {showContent ? helpme : null}
-        </AccordionDetails>
-        </Accordion>
+            </div>
+                </div>
+            <div className={`${showContent ? "visible":"collapse"}`}>
+            {props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> )}
+        </div>
+        </div>
     )
 }
 
