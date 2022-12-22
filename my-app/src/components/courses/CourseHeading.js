@@ -27,7 +27,7 @@ const CourseHeading = (props) =>{
     // }
 
     // iterable used in map will contain all module details acessed via slicing
-    let helpme = semesterFilter.map(course =><CourseList key= {course.Title} onSelect={props.onSelect} title ={course.Title}  details = {course.details} selection = {props.selection} onRemove={props.onRemove}/> );
+    let helpme = semesterFilter.map(course =><CourseList  key= {course.Title} onSelect={props.onSelect} title ={course.Title}  details = {course.details} selection = {props.selection} onRemove={props.onRemove}/> );
 
     if(classesUsed){
         testing = "w-6 h-6 rotate-180 transition ease-in-out duration-300"
@@ -47,7 +47,7 @@ const CourseHeading = (props) =>{
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 </svg>
         </div>
-        <div>
+        <div className={showContent? "space-y-8 bg-gray-300 py-4" :null} >
         {showContent ? helpme : null}
         </div>
         </div>

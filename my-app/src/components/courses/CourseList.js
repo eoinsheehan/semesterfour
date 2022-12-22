@@ -1,6 +1,5 @@
 import CourseDetails from './CourseDetails'
 import { useEffect, useState } from 'react';
-import { FaPlus, FaMinusCircle } from "react-icons/fa";
 
 const CourseList = (props) => {
 
@@ -35,29 +34,24 @@ const CourseList = (props) => {
     const removeCourse = () =>{
         props.onRemove(props.title)
         setSelected(!selected)
-        
-
     }
 
     return(
-            <div className='bg-gray-300 text-black space-y-4'expanded={showContent}>
+            <div className='bg-gray-300 text-black flex flex-col w-100'expanded={showContent}>
                 <div className='flex justify-between items-center'>
                 <div className='flex space-x-4 items-center'>
-                <p>{props.title}</p>
-                <div>
-                {selected ?<div aria-label="delete" size="small"  onClick={removeCourse}><FaMinusCircle/></div>:<div aria-label="delete" size="small"  onClick={selectCourse}><FaPlus/></div>}
+                    <div>
+                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='border-2 border-black bg-green-500 rounded p-1'  onClick={selectCourse}><p>Select Course</p></div>}
+                    </div>
+                    <p>{props.title}</p>
+                </div>
+                <div type="button" className='flex items-center bg-blue-900 text-white border-2 border-black p-1 rounded' onClick={toggleCourses}>
+                    {showContent?<p>Hide Details</p>:<p>Show Details</p>}
                 </div>
                 </div>
-            <div>
-            <svg className={showContent ? "w-6 h-6 rotate-180 transition ease-in-out duration-500": "w-6 h-6 transition ease-in-out duration-500"}onClick={toggleCourses}
-            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-</svg>
-            </div>
-                </div>
-            <div className={`${showContent ? "visible":"collapse"}`}>
+            <div className={showContent ? "visible":"hidden"}>
             {props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> )}
-        </div>
+            </div>
         </div>
     )
 }
