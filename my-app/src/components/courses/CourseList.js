@@ -49,7 +49,7 @@ const CourseList = (props) => {
                     {showContent?<p>Hide Details</p>:<p>Show Details</p>}
                 </div>
                 </div>
-            <div className={showContent ? "visible":"hidden"}>
+            <div className={showContent ? "overflow-hidden transition-[max-height] duration-500 m-h-1000":"overflow-hiddentransition-height duration-500 m-h-0"}>
             {props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> )}
             </div>
         </div>
