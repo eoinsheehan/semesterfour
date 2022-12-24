@@ -41,7 +41,7 @@ const CourseList = (props) => {
                 <div className='flex justify-between items-center'>
                 <div className='flex space-x-4 items-center'>
                     <div>
-                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='border-2 border-black bg-green-500 rounded p-1'  onClick={selectCourse}><p>Select Course</p></div>}
+                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='border-2 border-black bg-green-500 rounded p-1 transition-transform linear hover:scale-105'  onClick={selectCourse}><p>Select Course</p></div>}
                     </div>
                     <p>{props.title}</p>
                 </div>
@@ -49,7 +49,7 @@ const CourseList = (props) => {
                     {showContent?<p>Hide Details</p>:<p>Show Details</p>}
                 </div>
                 </div>
-            <div className={showContent ? "overflow-hidden transition-[max-height] duration-500 m-h-1000":"overflow-hiddentransition-height duration-500 m-h-0"}>
+            <div className={showContent ? "transition-all duration-1000 h-128 opacity-100 overflow-y-scroll":"h-0 opacity-0 overflow-y-scroll"}>
             {props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> )}
             </div>
         </div>

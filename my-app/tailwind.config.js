@@ -7,6 +7,9 @@ module.exports = {
     extend: {
       transitionProperty: {
         'height': 'height'
+      },
+      spacing: {
+        '128': '40rem',
       }
     },
   },

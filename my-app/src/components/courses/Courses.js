@@ -26,9 +26,9 @@ const Courses = (props) => {
 
     return (
         <div id="courses" className="border-2 bg-gray-300">
-            <div className='flex flex-col'>
-                <div className='flex'>{showFilters ? <button onClick={onFilterClick} className='bg-red-500 border-2 border-black rounded p-8'>Hide Filters</button>:<button onClick={onFilterClick} className='bg-red-500 border-2 border-black rounded p-8'>Show Filters</button>}
-                <div className='flex flex-col'><input onSelect={onFilterClick} onChange={onFilterClick}placeholder='which course?'></input>
+            <div className='flex flex-col m-h-10'>
+                <div className='flex m-h-10'>{showFilters ? <button onClick={onFilterClick} className='bg-red-500 border-2 border-black rounded p-8 h-10'>Hide Filters</button>:<button onClick={onFilterClick} className='bg-red-500 border-2 border-black rounded p-8 h-40'>Show Filters</button>}
+                <div className='flex flex-col  h-5 m-h-10'><input onSelect={onFilterClick} onChange={onFilterClick}placeholder='which course?'></input>
                 <div className={showFilters? "h-1/5 overflow-y-scroll visible":"hidden"}>
                     <ul>
                     {listItems}
@@ -37,12 +37,9 @@ const Courses = (props) => {
                 </div>
                 </div>
                 </div>
-                {showFilters ? 
-                <div className='transition-height duration-2000 ease-in-out h-100'>Showing filters</div> :
-                <div className='h-0'>No filters should be showing</div>}
-
+                <div className={showFilters?"transition-all duration-1000 h-40 opacity-100":"h-0 opacity-0"}>Showing filters</div>
             </div>
-            <p className="text-left text-blue-900">{content}</p>
+            {content}
         </div>
     )
 }
