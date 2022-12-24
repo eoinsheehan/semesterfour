@@ -41,15 +41,15 @@ const CourseList = (props) => {
                 <div className='flex justify-between items-center'>
                 <div className='flex space-x-4 items-center'>
                     <div>
-                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='border-2 border-black bg-green-500 rounded p-1 transition-transform linear hover:scale-105'  onClick={selectCourse}><p>Select Course</p></div>}
+                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='text-white font-normal bg-green-800 rounded p-1 transition-transform linear hover:scale-105'  onClick={selectCourse}><p>Select Course</p></div>}
                     </div>
                     <p>{props.title}</p>
                 </div>
-                <div type="button" className='flex items-center bg-blue-900 text-white border-2 border-black p-1 rounded' onClick={toggleCourses}>
+                <div type="button" className='flex font-normal items-center bg-blue-900 text-white p-1 rounded mx-1' onClick={toggleCourses}>
                     {showContent?<p>Hide Details</p>:<p>Show Details</p>}
                 </div>
                 </div>
-            <div className={showContent ? "transition-all duration-1000 h-128 opacity-100 overflow-y-scroll":"h-0 opacity-0 overflow-y-scroll"}>
+            <div className={showContent ? "transition-all duration-300 linear max-h-128 scale-y-100 origin-top ":"transition-all duration-300 ease-out max-h-0 scale-y-0 origin-top"}>
             {props.details.map(detail =><CourseDetails key={`${props.title}_details`} name = {Object.keys(detail)} value = {Object.values(detail)}/> )}
             </div>
         </div>

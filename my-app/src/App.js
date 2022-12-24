@@ -47,7 +47,7 @@ const App = () => {
   }
 
   return (
-    <div className='border-2 flex bg-gray-300 font-semibold'>
+    <div className='border-2 flex bg-gray-300 font-sans'>
       <div className='w-3/5'>
       <Course courseData = {courseData.length >0 && courseData} onSelect = {addCourse} selection = {selectedCourses} onRemove = {removeCourse} lecturers={lecturers}/>
       </div>

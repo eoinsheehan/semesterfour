@@ -6,10 +6,10 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        'height': 'height'
+        'max-height': 'max-height'
       },
       spacing: {
-        '128': '40rem',
+        '128': '100rem',
       }
     },
   },
