@@ -38,8 +38,8 @@ const CourseHeading = (props) =>{
 
 
     return (
-        <div className="rounded border-2 bg-black text-white text-xl hover:cursor-pointer">
-        <div className='font-bold flex flex-row justify-between px-8 py-6'onClick={toggleCourses} 
+        <div className="rounded bg-midnight-100 text-white text-xl border-b-2 border-gray-100">
+        <div className='font-bold flex flex-row justify-between px-8 py-6 hover:cursor-pointer'onClick={toggleCourses} 
         >
         {props.title}
         <svg className={testing} 
@@ -47,7 +47,7 @@ const CourseHeading = (props) =>{
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
 </svg>
         </div>
-        <div className={showContent? "space-y-8 bg-gray-300 py-4" :null} >
+        <div className={showContent? "space-y-2 bg-midnight py-4" :null} >
         {showContent ? helpme : null}
         </div>
         </div>

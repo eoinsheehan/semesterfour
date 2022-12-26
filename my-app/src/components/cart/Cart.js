@@ -41,7 +41,7 @@ const Cart = (props) => {
     let cartContents = props.selection.map(course => 
         <CartItem onRemove = {props.onRemove} title = {course.title} credits = {course.credits}/>)
     return(
-        <div className='text-black px-8 py-6 top-1 sticky flex flex-col'>
+        <div className='text-gray-100 px-8 py-6 top-1 sticky flex flex-col'>
             <div><p className='text-5xl'>Module Selection</p>
             {cartContents}
             <p className="text-2xl font-bold">

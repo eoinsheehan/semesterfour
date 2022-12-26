@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'midnight': '#0B1120',
+        'midnight-100': '#1E293B'
+      },
       transitionProperty: {
         'max-height': 'max-height'
       },

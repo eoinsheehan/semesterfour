@@ -1,9 +1,17 @@
-import { Checkbox, FormControlLabel, Typography, Box, IconButton } from '@mui/material'
-
+import { useState} from 'react'
 const FilterOption = (props) =>{
 
+    const [isChecked,setIsChecked]= useState(true);
+
+    const handleClick = () =>{
+        setIsChecked(!isChecked);
+    }
+
     return(
-        <FormControlLabel sx={{display:"block"}}control={<Checkbox defaultChecked size="small"/>} label={props.content} />
+        <div>
+        <input className='hover: cursor-pointer'type="checkbox" name={props.content} defaultChecked={isChecked} onClick={handleClick}/>
+        <label for={props.content}>{props.content}</label>
+        </div>
 
     )
 }

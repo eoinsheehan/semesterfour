@@ -37,11 +37,11 @@ const CourseList = (props) => {
     }
 
     return(
-            <div className='bg-gray-300 text-black flex flex-col w-100'expanded={showContent}>
+            <div className='bg-midnight-100 text-gray-100 flex flex-col w-100 p-4'expanded={showContent}>
                 <div className='flex justify-between items-center'>
                 <div className='flex space-x-4 items-center'>
                     <div>
-                    {selected ?<div className='border-2 border-black bg-red-500 rounded p-1' onClick={removeCourse}><p>Remove Course</p></div>:<div className='text-white font-normal bg-green-800 rounded p-1 transition-transform linear hover:scale-105'  onClick={selectCourse}><p>Select Course</p></div>}
+                    {selected ?<div className='transition-transform ease-in-out bg-red-500 rounded p-1 hover:scale-105 cursor-pointer' onClick={removeCourse}><p>Remove Course</p></div>:<div className='text-white font-normal bg-green-800 rounded p-1 transition-transform linear hover:scale-105 cursor-pointer'  onClick={selectCourse}><p>Select Course</p></div>}
                     </div>
                     <p>{props.title}</p>
                 </div>
