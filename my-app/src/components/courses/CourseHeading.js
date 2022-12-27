@@ -38,7 +38,7 @@ const CourseHeading = (props) =>{
 
 
     return (
-        <div className="rounded bg-midnight-100 text-white text-xl border-b-2 border-gray-100">
+        <div className="rounded bg-midnight-100 text-gray-300 text-xl border-b border-gray-300">
         <div className='font-bold flex flex-row justify-between px-8 py-6 hover:cursor-pointer'onClick={toggleCourses} 
         >
         {props.title}

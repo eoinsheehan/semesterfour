@@ -26,9 +26,9 @@ const FilterSection = (props) =>{
 
         <div>
         <div>
-        <h5>{props.title}</h5>
+        <h5 className='text-gray-100'>{props.title}</h5>
         </div>
-        <div>
+        <div className='bg-gray-700 rounded'>
         {filterOptions}
         </div>
         </div>
